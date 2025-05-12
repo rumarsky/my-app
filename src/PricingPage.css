@@ -1,101 +1,188 @@
+:root {
+  --primary-color: #DE4E29;
+  --secondary-color: #F02A0C;
+  --button-color: #78B951;
+  --button-hover: #F02A0C;
+  --text-light: white;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floating-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
 .pricing-cards-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 20px;
   border-radius: 20px;
-  padding: 5px 0;
-
+  padding: 20px 0;
   position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.price-title{
+.price-title {
   font-family: 'CrazyV1', sans-serif;
   text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-  color: #DE4E29;
+  margin: 0 0 40px 0;
+  font-size: clamp(4rem, 5vw, 2.5rem);
+  color: var(--primary-color);
 }
 
 .pricing-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: url('/Users/user/Desktop/my-app/src/image/облако вектор.png');
+  background-image: url('./assets/cloud.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 40px;
-  padding: 40px 30px 30px 30px;
-  width: 420px;
-  height: 260px;
+  padding: 40px 30px 30px;
+  width: 100%;
+  max-width: 520px;
+  min-height: 280px;
   text-align: center;
   position: relative;
-  color: #DE4E29;
+  color: var(--primary-color);
   font-family: 'Arial', sans-serif;
-  
+  box-sizing: border-box;
+  animation: floating 4s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+
+.pricing-card:nth-child(odd) {
+  animation: floating 5s ease-in-out infinite;
+}
+
+.pricing-card:nth-child(even) {
+  animation: floating-slow 6s ease-in-out infinite;
+}
+
+.pricing-card:hover {
+  animation-play-state: paused;
+  transform: translateY(-5px) scale(1.02);
 }
 
 .card-content {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card-description p {
-  margin: 0;
+  margin: 0.5em 0;
+  font-size: 1.3rem;
 }
 
 .pricing-card h3 {
-  color: #DE4E29;
-  font-size: 1.3rem;
+  color: var(--primary-color);
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
   text-align: center;
-  margin: 38px 27px 42px 149px;
+  margin: 0 auto 0.5rem;
   font-family: 'Arial Black', Arial, sans-serif;
-  width: 70px;
-  
+  max-width: 80%;
 }
 
 .pricing-card .price {
-  color: #F02A0C;
+  color: var(--secondary-color);
   font-size: 1.3rem;
   font-weight: bold;
   margin: 15px 0;
 }
 
 .signup-button {
-  background-color: #78B951;
-  color: white;
+  background-color: var(--button-color);
+  color: var(--text-light);
   font-weight: bold;
   border: none;
   padding: 10px 20px;
-  margin-top: 5px;
+  margin-top: 15px;
   border-radius: 30px;
   font-size: 1.2rem;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
   width: fit-content;
   align-self: center;
 }
 
 .signup-button:hover {
-  background-color: #F02A0C;
+  background-color: var(--button-hover);
   transform: scale(1.05);
 }
 
-.flower.left-flower {
+.flower {
   position: absolute;
-  top: 65px;
-  left: 0px;
-  width: 95px;
   z-index: 2;
+  width: 80px;
+  transition: transform 0.3s ease;
+}
+
+.flower.left-flower {
+  top: 20%;
 }
 
 .flower.right-flower {
-  position: absolute;
-  top: 100px;
-  right: -25px;
-  width: 80px;
-  
-  z-index: 2;
+  top: 30%;
+  right: -5px;
 }
 
+/* Добавим небольшую анимацию для цветов */
+.flower:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .pricing-card {
+    padding: 30px 20px;
+    min-height: 220px;
+  }
+
+  .flower {
+    width: 60px;
+  }
+
+  .flower.left-flower {
+    left: -15px;
+  }
+
+  .flower.right-flower {
+    right: -15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-card {
+    border-radius: 30px;
+    padding: 25px 15px;
+    animation: floating-slow 5s ease-in-out infinite;
+  }
+
+  .pricing-card h3 {
+    margin-bottom: 1rem;
+  }
+
+  .signup-button {
+    padding: 8px 16px;
+    font-size: 1rem;
+  }
+}

@@ -1,23 +1,35 @@
 import React from 'react';
 import './PricingPage.css';
-import flower1 from './image/flower1.png';
+import flowerImage1 from './assets/flowerVar1.png';
+import flowerImage2 from './assets/flowerVar2.png';
+import flowerImage3 from './assets/flowerVar3.png';
 
-function PricingCard({ title, description, price, buttonText, flower }) {
+const BUTTON_TEXT = "ЗАПИСАТЬСЯ";
+
+const FLOWER_IMAGES = [
+  { src: flowerImage1, color: 'yellow' },
+  { src: flowerImage2, color: 'pink' },
+  { src: flowerImage3, color: 'blue' }
+];
+
+function PricingCard({ title, description, buttonText = BUTTON_TEXT, flower }) {
   return (
-    <div className="pricing-card">
+    <div className="pricing-card" role="region" aria-label={`Тариф ${title}`}>
       {flower && (
         <img
           src={flower.src}
-          alt="flower"
+          alt="Декоративный цветок"
           className={`flower ${flower.className}`}
+          aria-hidden="true"
         />
       )}
       <div className="card-content">
         <h3>{title}</h3>
         <div className="card-description">{description}</div>
-        {price && <div className="price">{price}</div>}
       </div>
-      <button className="signup-button">{buttonText}</button>
+      <button className="signup-button" aria-label={`Записаться на ${title}`}>
+        {buttonText}
+      </button>
     </div>
   );
 }
@@ -25,32 +37,34 @@ function PricingCard({ title, description, price, buttonText, flower }) {
 function PricingPage() {
   const pricingOptions = [
     {
-      title: "ИНДИВИДУАЛЬНОЕ УЧАСТИЕ",
+      id: 'individual',
+      title: "В ОДИНОЧКУ",
       description: (
         <>
           <p>ДЕТИ (6-12 ЛЕТ) - 800 ₽</p>
           <p>ВЗРОСЛЫЕ (13+ ЛЕТ) - 1 200 ₽</p>
         </>
-      ),
-      price: "",
-      buttonText: "ЗАПИСАТЬСЯ",
+      )
     },
     {
-      title: "КОМАНДНОЕ УЧАСТИЕ",
+      id: 'team',
+      title: "КОМАНДА",
       description: (
         <>
           <p>ДЕТСКАЯ КОМАНДА - 2 000 ₽</p>
           <p>ВЗРОСЛАЯ КОМАНДА - 3 000 ₽</p>
         </>
-      ),
-      price: "",
-      buttonText: "ЗАПИСАТЬСЯ",
+      )
     },
     {
-      title: "СЕМЕЙНЫЙ ПАКЕТ",
-      description: "2 взрослых + 2 ребенка",
-      price: "3 500 ₽",
-      buttonText: "ЗАПИСАТЬСЯ",
+      id: 'family',
+      title: "СЕМЬЯ",
+      description: (
+        <>
+          <p>2 ВЗРОСЛЫХ + 2 РЕБЕНКА - 3 500 ₽</p>
+          <p>2 ВЗРОСЛЫХ + 1 РЕБЕНОК - 3 000 ₽</p>
+        </>
+      )
     }
   ];
 
@@ -60,18 +74,17 @@ function PricingPage() {
       <div className="pricing-cards-container">
         {pricingOptions.map((option, index) => {
           const flowerPosition = index % 2 === 0 ? 'left-flower' : 'right-flower';
+          const flowerType = FLOWER_IMAGES[index % FLOWER_IMAGES.length];
           const flower = {
-            src: flower1,
-            className: `yellow ${flowerPosition}`
+            src: flowerType.src,
+            className: `${flowerType.color} ${flowerPosition}`
           };
 
           return (
             <PricingCard
-              key={index}
+              key={option.id}
               title={option.title}
               description={option.description}
-              price={option.price}
-              buttonText={option.buttonText}
               flower={flower}
             />
           );
