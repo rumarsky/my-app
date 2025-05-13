@@ -1,0 +1,109 @@
+.calculator-container {
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+  }
+  
+  .calculator-content {
+    background-color: #ffe6dd;
+    border: 2px dashed #de4e29;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .radio-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .radio-group label,
+  .custom-input {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 1rem;
+  }
+  
+  .radio-group input[type="radio"] {
+    accent-color: #F02A0C;;
+    width: 15px;
+    height: 15px;
+  }
+  
+  .custom-input span {
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  .custom-input input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .price-display {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .price-display p {
+    text-align: left;
+    font-size: 1.5rem;
+    color: #de4e29;
+  }
+  
+  .price-values {
+    display: flex;
+    gap: 20px;
+    font-size: 2rem;
+  }
+  
+  .total-price {
+    color: #78b951;
+    font-weight: bold;
+    font-size: 2.5rem;
+  }
+  
+  .discounted-price {
+    text-decoration: line-through;
+    color: #333;
+    font-size: 2rem;
+  }
+  
+  .signup-button {
+    background-color: var(--button-color);
+    color: var(--text-light);
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    width: fit-content;
+    align-self: center;
+  }
+  
+  .signup-button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+  }
+
+h3 {
+    font-size: 1.3rem;
+    color: #de4e29;
+    margin: 0px;
+    text-align: left;
+
+}

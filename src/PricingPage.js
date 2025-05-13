@@ -90,6 +90,7 @@ function PricingPage() {
           );
         })}
       </div>
+      <div className="wave-separator-calc"></div> {}
     </div>
   );
 }

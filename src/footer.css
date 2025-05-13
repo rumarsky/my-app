@@ -1,0 +1,41 @@
+.footer {
+    background-color: #A2DCF4;
+    color: white;
+    padding: 20px 20px;
+    text-align: left;
+    position: relative;
+    font-weight: 500;
+  }
+  
+  .footer-content {
+    margin-right: 100px; 
+  }
+  
+  .up-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  .up-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .wave-separator-footer {
+    background-image: url('./assets/wave-footer.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100px;
+    margin-top: 20px;
+    margin-bottom: -40px;
+  }
